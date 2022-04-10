@@ -1,19 +1,19 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
-const List = ({ navigation }) => {
+const Form = ({ navigation }) => {
     return (
         <View>
             <View>
-                <Text>List of itmes</Text>
+                <Text>Form to add new item</Text>
             </View>
             <View>
-                <TouchableOpacity onPress={() => navigation.navigate('Form')}>
-                    <Text>Add new item</Text>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Text>Go back to the list</Text>
                 </TouchableOpacity>
             </View>
         </View>
     );
 }
 
-export default List;
+export default Form;
