@@ -10,7 +10,10 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='List'>
+      <Stack.Navigator 
+        initialRouteName='List' 
+        screenOptions={{headerStyle: {backgroundColor: '#86A922'}, headerTintColor: '#FFF'}}
+      >
         <Stack.Screen name="List" component={List} options={{title: 'Kitchen Timer'}}/>
         <Stack.Screen name='Form' component={Form} options={{title: 'Add new item'}}/>
       </Stack.Navigator>

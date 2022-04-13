@@ -8,9 +8,9 @@ const List = ({ navigation }) => {
             <View>
                 <Text>List of itmes</Text>
             </View>
-            <View>
-                <TouchableOpacity onPress={() => navigation.navigate('Form')}>
-                    <Text>Add new item</Text>
+            <View style={GlobalStyle.btnContainer}>
+                <TouchableOpacity style={GlobalStyle.btnStyle} onPress={() => navigation.navigate('Form')}>
+                    <Text style={GlobalStyle.btnTxtStyle}>Add new item</Text>
                 </TouchableOpacity>
             </View>
         </View>
