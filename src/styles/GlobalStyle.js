@@ -13,12 +13,13 @@ export default StyleSheet.create({
     btnStyle: {
         backgroundColor: '#EE782D',
         color: 'white',
-        height: 40,
+        height: 50,
+        borderRadius: 10
     },
     btnTxtStyle: {
         color: 'white',
-        fontSize: 16,
+        fontSize: 18,
         textAlign: 'center',
-        lineHeight: 40
+        lineHeight: 50
     }
 });
