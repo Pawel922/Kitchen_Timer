@@ -1,11 +1,12 @@
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-const ListItem = ({ data }) => {
+const ListItem = ({ data, navigation }) => {
     const { productContainer, detailBtn, editBtn, deleteBtn, txtBtn} = styles;
     return (
         <View style={productContainer}>
-            <TouchableOpacity style={detailBtn}>
+            <TouchableOpacity style={detailBtn} onPress={() => navigation.navigate('Product', {details: data})}>
                 <Text style={{...txtBtn, fontSize: 18, fontWeight: 'bold'}}>{data.name}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={editBtn}>

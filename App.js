@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import List from './src/screens/List';
 import Form from './src/screens/Form';
+import Product from './src/screens/Product';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ const App = () => {
       >
         <Stack.Screen name="List" component={List} options={{title: 'Kitchen Timer'}}/>
         <Stack.Screen name='Form' component={Form} options={{title: 'Add new item'}}/>
+        <Stack.Screen name='Product' component={Product}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

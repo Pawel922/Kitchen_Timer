@@ -18,7 +18,7 @@ const List = ({ navigation }) => {
             <View style={styles.listContainer}>
                 <FlatList 
                     data={productList}
-                    renderItem={({ item }) => <ListItem data={item}/>}
+                    renderItem={({ item }) => <ListItem data={item} navigation={navigation}/>}
                     keyExtractor={item => item.id}>
                 </FlatList>
             </View>
