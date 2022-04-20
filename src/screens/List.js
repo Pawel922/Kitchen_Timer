@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { FlatList } from "react-native";
 
-import Product from "../components/Product";
+import ListItem from "../components/ListItem";
 
 import GlobalStyle from "../styles/GlobalStyle";
 
@@ -18,7 +18,7 @@ const List = ({ navigation }) => {
             <View style={styles.listContainer}>
                 <FlatList 
                     data={productList}
-                    renderItem={({ item }) => <Product data={item}/>}
+                    renderItem={({ item }) => <ListItem data={item}/>}
                     keyExtractor={item => item.id}>
                 </FlatList>
             </View>

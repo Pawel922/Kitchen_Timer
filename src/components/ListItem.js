@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-const Product = ({ data }) => {
+const ListItem = ({ data }) => {
     const { productContainer, detailBtn, editBtn, deleteBtn, txtBtn} = styles;
     return (
         <View style={productContainer}>
@@ -53,4 +53,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Product;
+export default ListItem;
