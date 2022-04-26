@@ -7,9 +7,9 @@ import ListItem from "../components/ListItem";
 import GlobalStyle from "../styles/GlobalStyle";
 
 const productList = [
-    {id: 1, name: 'Egg', time: 3},
-    {id: 2, name: 'Pasta', time: 7},
-    {id: 3, name: 'Rice', time: 15}
+    {id: 1, name: 'Egg', minutes: 3, seconds: 50},
+    {id: 2, name: 'Pasta', minutes: 5, seconds: 20},
+    {id: 3, name: 'Rice', minutes: 1, seconds: 40}
 ];
 
 const List = ({ navigation }) => {
