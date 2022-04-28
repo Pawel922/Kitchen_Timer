@@ -8,25 +8,9 @@ const Product = ({ route, navigation }) => {
     const { details } = route.params;
     const [remainingMinutes, remainingSeconds] = useCountDownTimer(details.minutes, details.seconds);
 
-    // const [timer, setTimer] = useState(details.time)
-    // const [intervalId,setIntervalId] = useState(0);
-
-    // useEffect(() => {
-    //     navigation.setOptions({title: details.name});
-    // },[]);
-
-    // const handleClick = () => {
-    //     if(intervalId) {
-    //         clearInterval(intervalId);
-    //         setIntervalId(0);
-    //         return;
-    //     }
-
-    //     const newIntervalId = setInterval(() => {
-    //         setTimer(prevTimer => prevTimer - 1);
-    //     }, 1000);
-    //     setIntervalId(newIntervalId);
-    // }
+    useEffect(() => {
+        navigation.setOptions({title: details.name});
+    },[]);
 
 
     return (
