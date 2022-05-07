@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { borderBottomColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 const CountDownTimer = ({ targetMinutes, targetSeconds }) => {
-    const { timerContainer, timerDisplay, valueDisplay, textDisplay } = styles;
-    const [remainingTime, setRemainingTime] = useState(targetMinutes * 60 + targetSeconds);
+    const { timerBtnContainer, timerBtn, timerBtnTxt, timerContainer, timerDisplay, valueDisplay, textDisplay } = styles;
+    const initialTime = targetMinutes * 60 + targetSeconds;
+    const [remainingTime, setRemainingTime] = useState(initialTime);
     const [isRunning, setIsRunning] = useState(false);
     const [intervalId, setIntervalId] = useState(0);
 
@@ -13,7 +13,7 @@ const CountDownTimer = ({ targetMinutes, targetSeconds }) => {
         setIsRunning(true);
     };
 
-    const stopTimer = () => {
+    const pauseTimer = () => {
         setIsRunning(false);
     }
 
@@ -63,13 +63,26 @@ const CountDownTimer = ({ targetMinutes, targetSeconds }) => {
                     </Text>
                 </View>
             </View>
-            <View>
-                <TouchableOpacity onPress={startTimer}>
-                    <Text>Start</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={stopTimer}>
-                    <Text>Stop</Text>
-                </TouchableOpacity>
+            <View style={timerBtnContainer}>
+                <View style={isRunning ? {opacity: 1} : {opacity: 0.3}}>
+                    <TouchableOpacity 
+                        onPress={pauseTimer} 
+                        style={{...timerBtn, backgroundColor: '#DD1040'}}
+                        disabled={isRunning ? false : true}
+                    >
+                        <Text style={timerBtnTxt}>Pause</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={isRunning ? {opacity: 0.3} : {opacity: 1}}>  
+                    <TouchableOpacity 
+                        onPress={startTimer} 
+                        style={{...timerBtn, backgroundColor: '#86A922'}} 
+                        disabled={isRunning ? true : false}
+                    >
+                        <Text style={timerBtnTxt}>{initialTime === remainingTime ? 'Start' : 'Resume'}</Text>
+                    </TouchableOpacity>
+                </View>
+                
             </View>
         </View>
     );
@@ -100,8 +113,29 @@ const styles = StyleSheet.create({
     },
     textDisplay: {
         fontSize: 70
+    },
+    timerBtnContainer: {
+        flexDirection: 'row'
+    },
+    timerBtn: {
+        height: 70,
+        width: 120,
+        marginTop: 12,
+        marginBottom: 12,
+        marginLeft: 12,
+        marginRight: 12,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'red',
+        borderRadius: 10,
+        borderWidth: 2
+    },
+    timerBtnTxt: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
     }
-
 });
 
 export default CountDownTimer;
