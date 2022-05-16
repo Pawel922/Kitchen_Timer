@@ -1,18 +1,16 @@
-import React from "react";
+import React, { useContext} from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { FlatList } from "react-native";
 
 import ListItem from "../components/ListItem";
-
 import GlobalStyle from "../styles/GlobalStyle";
 
-const productList = [
-    {id: 1, name: 'Egg', minutes: 0, seconds: 5},
-    {id: 2, name: 'Pasta', minutes: 5, seconds: 20},
-    {id: 3, name: 'Rice', minutes: 1, seconds: 40}
-];
+import { ProductsContext} from "../contexts/ProductsContext";
 
 const List = ({ navigation }) => {
+
+    const { productList } = useContext(ProductsContext);
+    
     return (
         <View style={GlobalStyle.parentContainer}>
             <View style={styles.listContainer}>
