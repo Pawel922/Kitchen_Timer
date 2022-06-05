@@ -16,8 +16,22 @@ const Form = ({ navigation }) => {
         }
     });
 
+    const showErrorMessage = (error) => {
+        if (!error) {
+            return ''
+        } else {
+            switch (error.type) {
+                case 'required':
+                    return 'This is required';
+                case 'min': 
+                    return 'Must be a number greater or equl 0';
+                case 'max':
+                    return 'Must be a number less than 60'
+            }
+        };
+    };
+
     const onSubmit = () => {
-        console.log(errors.content);
         navigation.navigate({name: 'List'})
     };
 
@@ -38,11 +52,11 @@ const Form = ({ navigation }) => {
                     )}
                     name="name"
                 />
-                <Text style={errorMsg}>{errors.name ? 'This is required' : ''}</Text>
+                <Text style={errorMsg}>{showErrorMessage(errors.name)}</Text>
                 <Text style={label}>Minutes:</Text>
                 <Controller
                     control={control}
-                    rules={{required: true}}
+                    rules={{required: true, min: 0}}
                     render={({ field: { onChange, onBlur, value }}) => (
                         <TextInput
                             style={txtInput}
@@ -53,11 +67,11 @@ const Form = ({ navigation }) => {
                     )}
                     name="minutes"
                 />
-                <Text style={errorMsg}>{errors.minutes ? 'This is required' : ''}</Text>
+                <Text style={errorMsg}>{showErrorMessage(errors.minutes)}</Text>
                 <Text style={label}>Seconds:</Text>
                 <Controller
                     control={control}
-                    rules={{required: true}}
+                    rules={{required: true, min: 0, max: 59}}
                     render={({ field: { onChange, onBlur, value }}) => (
                         <TextInput
                             style={txtInput}
@@ -68,7 +82,7 @@ const Form = ({ navigation }) => {
                     )}
                     name="seconds"
                 />
-                <Text style={errorMsg}>{errors.seconds ? 'This is required' : ''}</Text>
+                <Text style={errorMsg}>{showErrorMessage(errors.seconds)}</Text>
             </View>
             <View style={GlobalStyle.btnContainer}>
                 <TouchableOpacity style={GlobalStyle.btnStyle} onPress={handleSubmit(onSubmit)}>
