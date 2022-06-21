@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
 
 import GlobalStyle from "../styles/GlobalStyle";
 
 const Form = ({ navigation }) => {
-
+    const { minutesContainer, changeBtn, changeBtnTxt, largeSize, mediumSize, smallSize, timeDisplay} = styles;
     const [inputName, setInputName] = useState('');
     const [inputMinutes, setInputMin] = useState(0);
     
@@ -24,16 +24,27 @@ const Form = ({ navigation }) => {
         <View style={GlobalStyle.parentContainer}>
             <View>
                 <TextInput onChangeText={handleInputName} value={inputName}/>
-                <Text>{inputMinutes}</Text>
-                <TouchableOpacity onPress={() => handleInputMinutes(1)}>
-                    <Text>+1</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleInputMinutes(5)}>
-                    <Text>+5</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleInputMinutes(10)}>
-                    <Text>+10</Text>
-                </TouchableOpacity>
+                <View style={minutesContainer}>
+                    <TouchableOpacity onPress={() => handleInputMinutes(-10)} style={[changeBtn, largeSize]}>
+                        <Text style={changeBtnTxt}>-10</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => handleInputMinutes(-5)} style={[changeBtn, mediumSize]}>
+                        <Text style={changeBtnTxt}>-5</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => handleInputMinutes(-1)} style={[changeBtn, smallSize]}>
+                        <Text style={changeBtnTxt}>-1</Text>
+                    </TouchableOpacity>
+                    <Text style={timeDisplay}>{inputMinutes}</Text>
+                    <TouchableOpacity onPress={() => handleInputMinutes(1)} style={[changeBtn, smallSize]}>
+                        <Text style={changeBtnTxt}>+1</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => handleInputMinutes(5)} style={[changeBtn, mediumSize]}>
+                        <Text style={changeBtnTxt}>+5</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => handleInputMinutes(10)} style={[changeBtn, largeSize]}>
+                        <Text style={changeBtnTxt}>+10</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
             <View style={GlobalStyle.btnContainer}>
                 <TouchableOpacity style={GlobalStyle.btnStyle} onPress={onSubmit}>
@@ -47,5 +58,39 @@ const Form = ({ navigation }) => {
     );
 }
 
+const styles = StyleSheet.create({
+    minutesContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    changeBtn: {
+        borderColor: 'black',
+        borderWidth: 2,
+        borderRadius: 10,
+        backgroundColor: "white",
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    largeSize: {
+        width: 55,
+        height: 55,
+    },
+    mediumSize: {
+        width: 45,
+        height: 45,
+    },
+    smallSize: {
+        width: 35,
+        height: 35,
+    },
+    changeBtnTxt: {
+        fontSize: 17,
+    },
+    timeDisplay: {
+        padding: 7,
+        fontSize: 30
+    }
+});
 
 export default Form;
